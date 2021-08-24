@@ -1,0 +1,23 @@
+ca:
+   root:
+      dn: CN=root.ca.mongo,OU=CA,O=mongo\, Inc.,DC=mongo
+      keysize: 2048
+      validityDays: 730
+      pkPassword: none
+      file: root-ca.pem
+
+### Default values and global settings
+defaults:
+      validityDays: 730
+      pkPassword: none
+      httpsEnabled: false
+      reuseTransportCertificatesForHttp: false
+      verifyHostnames: false
+      resolveHostnames: false
+
+nodes:
+  - name: mongo
+    dn: CN=mongo.mongo,OU=Ops,O=mongo\, Inc.,DC=mongo
+    dns: mongo.mongo
+    ip: {{ ansible_default_ipv4.address }}
+
